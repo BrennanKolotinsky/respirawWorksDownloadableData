@@ -5,13 +5,14 @@ import { getFileNames } from '../services/index.js';
 const DataFileTable = (props) => {
 
   const[loadedFileNames, setLoadedFileNames] = useState(false);
-  
+  const[files, setFiles] = useState(null);
+
   useEffect(async () => {
     const files = await getFileNames();
-    console.log(files);
-  });
+    setLoadedFileNames(true);
+    setFiles(files?.data?.fileNames);
+  }, []);
 
-  
   
   return (
     <div>Here</div>
