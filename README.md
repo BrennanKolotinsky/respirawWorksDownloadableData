@@ -11,7 +11,7 @@ To test locally:
 3. run ```nodemon start``` in the root of the folder and look at  http://localhost:3000
 
 To test production:
-1. From the root of the folder run ```cd client```
+1. From the root of the folder run ```cd client/app1```
 2. Run ```npm run build```
 3. Cut and paste the new production build into the server folder
 4. See the product and changes on Heroku: https://respiraworks-download-data.herokuapp.com/
