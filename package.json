@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3001 node ./bin/www",
-    "server": "start",
+    "start": "node ./bin/www",
+    "server": "PORT=3001 start",
     "dev": "run-p server start"
   },
   "dependencies": {
