@@ -8,7 +8,7 @@ Purpose
 To test locally:
 1. Clone the repo
 2. run ```npm i``` and ```npm update```
-3. run ```nodemon server``` in the root of the folder to run the server
+3. run ```PORT=3001 nodemon start``` in the root of the folder to run the server
 4. Open a separate window then run ```npm start``` in client/app1
 5. Look at  http://localhost:3000
 
