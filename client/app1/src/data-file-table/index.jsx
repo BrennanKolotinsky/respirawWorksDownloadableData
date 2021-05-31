@@ -20,7 +20,7 @@ const DataFileTable = (props) => {
      return <div className="" key={index}>
        { index === 0 ?
          (
-           <div className="row border" key={index}>
+           <div className="row border">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
              <p className="col-6 my-auto"><strong>Filename:</strong></p>
              <p className="col-4 my-auto"><strong>Download:</strong></p>
@@ -32,9 +32,14 @@ const DataFileTable = (props) => {
        <div className="row border" key={index}>
          <p className="col-2 mt-3">{ index + 1 }</p>
          <p className="col-6 mt-3">{ file }</p>
-         <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto" value="DOWNLOAD"></input>
+         <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto"
+           value="DOWNLOAD" onClick={() => downloadFile(file)}></input>
        </div>
      </div>
+  });
+
+  const downloadFile = ((fileName) => {
+    console.log(fileName);
   });
   
   return (
