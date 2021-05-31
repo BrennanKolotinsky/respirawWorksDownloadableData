@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getFileNames } from '../services/index.js';
+import { getFileNames } from '../services/index';
+import './index.css'
 
 const DataFileTable = (props) => {
 
@@ -20,27 +21,27 @@ const DataFileTable = (props) => {
        { index === 0 ?
          (
            <div className="row border" key={index}>
-             <p className="col-1 col-lg-1 mt-3">Index:</p>
-             <p className="col-4 col-lg-2 my-auto">Filename:</p>
-             <p className="col-2 col-lg-2 my-auto">Download:</p>
+             <p className="col-2 mt-3"><strong>Index:</strong></p>
+             <p className="col-6 my-auto"><strong>Filename:</strong></p>
+             <p className="col-4 my-auto"><strong>Download:</strong></p>
            </div>
          )
          : null 
        }
 
        <div className="row border" key={index}>
-         <p className="col-1 col-lg-1 mt-3">{ index + 1 }</p>
-         <p className="col-4 col-lg-2 mt-3">{ file }</p>
-         <input type="button"className="btn btn-primary col-2 col-lg-2 my-auto" value="DOWNLOAD"></input>
+         <p className="col-2 mt-3">{ index + 1 }</p>
+         <p className="col-6 mt-3">{ file }</p>
+         <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto" value="DOWNLOAD"></input>
        </div>
      </div>
   });
   
   return (
     <div>
-      <h2>Downloadable Test Data:</h2>
 
-      <div className="container">
+      <div className="container max-width-600">
+        <h2 className="mt-3">Downloadable Test Data:</h2>
         {filesTable}
       </div>
 
