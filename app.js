@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const mongoConnection = require('./mongoDB/index.js');
+// const mongoConnection = require('./mongoDB/index.js');
 // mongoConnection.testConnectToMongo();
 
 var indexRouter = require('./routes/index');
