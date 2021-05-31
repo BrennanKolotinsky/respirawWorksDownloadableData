@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getFileNames } from '../services/index.js';
-
+import Button from 'react-bootstrap/Button';
 
 const DataFileTable = (props) => {
 
@@ -8,7 +8,7 @@ const DataFileTable = (props) => {
   const[files, setFiles] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const files = await getFileNames();
       setLoadedFileNames(true);
       setFiles(files?.data?.fileNames);
@@ -18,7 +18,12 @@ const DataFileTable = (props) => {
 
   
   return (
-    <div>Here</div>
+    <div>
+      <h2>Here</h2>
+      <input type="button"className="btn btn-primary" value="DOWNLOAD"></input>
+      
+    </div>
+    
 
 
 

@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
 import DataFileTable from './data-file-table/index.jsx'
+import './App.scss';
 
 export default function App() {
   return (
