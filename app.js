@@ -8,7 +8,10 @@ var logger = require('morgan');
 // var usersRouter = require('./routes/users');
 const mongoRouter = require('./routes/mongo-routes');
 
-var app = express();
+const app = express();
+
+const cors = require('cors'); // allow other domains to access this server
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-app.use('/test-route', mongoRouter);
+app.use('/get-mongo-data', mongoRouter);
 
 app.use(express.static(path.join(__dirname, 'build'))); // add the build folder
 

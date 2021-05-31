@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoConnection = require('../mongoDB/index.js');
 
-router.get('/test-route', async (req, res) => {
+// test-route/test-route
+router.get('/file-names', async (req, res) => {
   const fileNames = await mongoConnection.grabAllFileNames();
 
   res.send({
