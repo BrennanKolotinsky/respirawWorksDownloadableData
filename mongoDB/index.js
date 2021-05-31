@@ -10,18 +10,32 @@ const connectToDb = (function() {
   connection = client.connect();
 }())
 
-const testConnectToMongo = async () => {  
+const testConnectToMongo = () => {  
   return connection.then(() => {
     const dbo = client.db(databaseName);
-    dbo.collection(collectionName).findOne({}, function(err, result) {
+    return dbo.collection(collectionName).findOne({}, function(err, result) {
       if (err) throw err;
       console.log(result);
     });
   })
 }
 
+const grabAllFileNames = async () => {  
+  return connection.then(async () => {
+    const dbo = client.db(databaseName);
+    const fileNameArr = [];
+    await dbo.collection(collectionName).find().forEach(
+      (e) => {
+      	fileNameArr.push(e.filename);
+  	});
+
+  	return fileNameArr;
+  });
+}
+
 module.exports = {
 	client,
 	connection,
-	testConnectToMongo
+	testConnectToMongo,
+	grabAllFileNames,
 };

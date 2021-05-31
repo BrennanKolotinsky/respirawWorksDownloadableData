@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// const mongoConnection = require('./mongoDB/index.js');
+const mongoConnection = require('./mongoDB/index.js');
 // mongoConnection.testConnectToMongo();
 
 var indexRouter = require('./routes/index');
@@ -27,9 +27,12 @@ app.use('/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/test-route', (req, res) => {
+app.get('/test-route', async (req, res) => {
+  const fileNames = await mongoConnection.grabAllFileNames();
+
   res.send({
-    msg : "Works"
+    msg : "Works",
+    fileNames: fileNames,
   });
 });
 
