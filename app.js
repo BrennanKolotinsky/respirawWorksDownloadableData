@@ -4,11 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const mongoConnection = require('./mongoDB/index.js');
-// mongoConnection.testConnectToMongo();
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
+const mongoRouter = require('./routes/mongo-routes');
 
 var app = express();
 
@@ -22,20 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+app.use('/test-route', mongoRouter);
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build'))); // add the build folder
 
-app.get('/test-route', async (req, res) => {
-  const fileNames = await mongoConnection.grabAllFileNames();
-
-  res.send({
-    msg : "Works",
-    fileNames: fileNames,
-  });
-});
-
+// all other requests serve client!
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
