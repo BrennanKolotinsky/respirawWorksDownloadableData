@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFileNames } from '../services/index';
+import { getFileNames, downloadFile } from '../services/index';
 import './index.css'
 
 const DataFileTable = (props) => {
@@ -33,14 +33,16 @@ const DataFileTable = (props) => {
          <p className="col-2 mt-3">{ index + 1 }</p>
          <p className="col-6 mt-3">{ file }</p>
          <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto"
-           value="DOWNLOAD" onClick={() => downloadFile(file)}></input>
+           value="DOWNLOAD" onClick={() => createFile(file)}></input>
        </div>
      </div>
   });
 
-  const downloadFile = ((fileName) => {
-    console.log(fileName);
-  });
+  const createFile = async (fileName) => {
+    const resp = await downloadFile(fileName);
+    const file = resp.data;
+    console.log(file);
+  };
   
   return (
     <div>

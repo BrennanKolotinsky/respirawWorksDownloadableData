@@ -33,9 +33,17 @@ const grabAllFileNames = async () => {
   });
 }
 
+const getFile = async (filename) => {  
+  return connection.then(async () => {
+    const dbo = client.db(databaseName);
+    return await dbo.collection(collectionName).findOne({filename});
+  });
+}
+
 module.exports = {
 	client,
 	connection,
 	testConnectToMongo,
 	grabAllFileNames,
+  getFile,
 };
