@@ -22,7 +22,7 @@ const DataFileTable = (props) => {
      return <div className="" key={index}>
        { index === 0 ?
          (
-           <div className="row border">
+           <div className="row border mt-4">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
              <p className="col-6 my-auto"><strong>Filename:</strong></p>
              <p className="col-4 my-auto"><strong>Download:</strong></p>
@@ -37,6 +37,18 @@ const DataFileTable = (props) => {
          <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto"
            value="DOWNLOAD" onClick={() => createFile(file)}></input>
        </div>
+
+       { index + 1 === files.length ?
+         (
+           <div className="row border">
+             <p className="col-2 mt-3">{ index + 2}</p>
+             <p className="col-6 my-auto"><strong>All Files</strong></p>
+             <input type="button" className="btn btn-success col-4 my-auto download-button mx-auto"
+               value="DOWNLOAD ALL" onClick={() => createAllFiles()}></input>
+           </div>
+         )
+         : null 
+       }
      </div>
   });
 
@@ -54,12 +66,16 @@ const DataFileTable = (props) => {
     // Save the file
     saveAs(fileToSave, downloadName);
   };
+
+  const createAllFiles = () => {
+    files.forEach((file) => createFile(file));
+  };
   
   return (
     <div>
 
-      <div className="container max-width-600">
-        <h2 className="mt-3">Downloadable Test Data:</h2>
+      <div className="container max-width-600 mb-4">
+        <h2 className="mt-4">Downloadable Test Data:</h2>
         {filesTable}
       </div>
 
