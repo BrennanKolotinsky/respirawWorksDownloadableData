@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getFileNames, downloadFile } from '../services/index';
 import './index.css'
+import fs from 'fs';
+import { saveAs } from 'file-saver';
 
 const DataFileTable = (props) => {
 
@@ -40,8 +42,17 @@ const DataFileTable = (props) => {
 
   const createFile = async (fileName) => {
     const resp = await downloadFile(fileName);
-    const file = resp.data;
-    console.log(file);
+
+    const downloadName = fileName.split('.')[0] + '.json';
+
+    // Create a blob of the data
+    var fileToSave = new Blob([JSON.stringify(resp.data.file)], {
+        type: 'application/json',
+        name: downloadName
+    });
+
+    // Save the file
+    saveAs(fileToSave, downloadName);
   };
   
   return (
