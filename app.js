@@ -28,11 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 app.use('/get-mongo-data', mongoRouter);
 
-app.use(express.static(path.join(__dirname, 'build'))); // add the build folder
+app.use(express.static(path.join(__dirname, 'client', 'app1', 'build'))); // add the build folder
 
 // all other requests serve client!
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'app1', 'build'));
 });
 
 // catch 404 and forward to error handler
