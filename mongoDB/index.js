@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://respiraWorks:S5u7t5yOmomK0x9j@cluster0.7yqbv.mongodb.net/sampleData?retryWrites=true&w=majority";
+
+const url = process.env.MONGODB_URL;
 const databaseName = "sampleData";
 const collectionName = "dataFiles";
 
