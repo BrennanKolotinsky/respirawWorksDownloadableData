@@ -14,6 +14,5 @@ To test locally:
 
 To test production:
 1. From the root of the folder run ```cd client/app1```
-2. Run ```npm run build```
-3. Cut and paste the new production build into the server folder
-4. See the product and changes on Heroku: https://respiraworks-download-data.herokuapp.com/
+2. Run ```npm run build``` and push the changes
+3. See the product and changes on Heroku: https://respiraworks-download-data.herokuapp.com/
