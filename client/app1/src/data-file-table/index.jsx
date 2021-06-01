@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getFileNames, downloadFile } from '../services/index';
 import './index.css'
-import fs from 'fs';
 import { saveAs } from 'file-saver';
+
+import 'font-awesome/css/font-awesome.min.css';
 
 const DataFileTable = (props) => {
 
@@ -24,8 +25,8 @@ const DataFileTable = (props) => {
          (
            <div className="row border mt-4">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
-             <p className="col-6 my-auto"><strong>Filename:</strong></p>
-             <p className="col-4 my-auto"><strong>Download:</strong></p>
+             <p className="col-6 my-auto"><i className="fa fa-file"></i><strong> Filename:</strong></p>
+             <p className="col-4 my-auto"><i className="fa fa-download"></i><strong> Download:</strong></p>
            </div>
          )
          : null 
@@ -34,8 +35,8 @@ const DataFileTable = (props) => {
        <div className="row border" key={index}>
          <p className="col-2 mt-3">{ index + 1 }</p>
          <p className="col-6 mt-3">{ file }</p>
-         <input type="button" className="btn btn-primary col-4 my-auto download-button mx-auto"
-           value="DOWNLOAD" onClick={() => createFile(file)}></input>
+         <button className="btn btn-primary col-4 my-auto download-button mx-auto"
+            onClick={() => createFile(file)}>DOWNLOAD</button>
        </div>
 
        { index + 1 === files.length ?
@@ -43,8 +44,8 @@ const DataFileTable = (props) => {
            <div className="row border">
              <p className="col-2 mt-3">{ index + 2}</p>
              <p className="col-6 my-auto"><strong>All Files</strong></p>
-             <input type="button" className="btn btn-success col-4 my-auto download-button mx-auto"
-               value="DOWNLOAD ALL" onClick={() => createAllFiles()}></input>
+             <button className="btn btn-success col-4 my-auto download-button mx-auto"
+               onClick={() => createAllFiles()}>DOWNLOAD ALL</button>
            </div>
          )
          : null 
@@ -73,10 +74,9 @@ const DataFileTable = (props) => {
   
   return (
     <div>
-
       <div className="container max-width-600 mb-4">
         <h2 className="mt-4">Downloadable Test Data:</h2>
-        {filesTable}
+        {loadedFileNames ? filesTable : <center><i className="fa fa-spinner fa-spin fa-5x mt-5"></i></center>}
       </div>
 
       
