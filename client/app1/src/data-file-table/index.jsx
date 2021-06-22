@@ -26,8 +26,7 @@ const DataFileTable = (props) => {
            <div className="row border mt-4">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
              <p className="col-6 my-auto"><i className="fa fa-file"></i><strong> Filename:</strong></p>
-             <p className="col-2 my-auto"><i className="fa fa-download"></i><strong> Download JSON:</strong></p>
-             <p className="col-2 my-auto"><i className="fa fa-download"></i><strong> Download CSV:</strong></p>
+             <p className="col-4 my-auto"><i className="fa fa-download"></i><strong> Download:</strong></p>
            </div>
          )
          : null 
