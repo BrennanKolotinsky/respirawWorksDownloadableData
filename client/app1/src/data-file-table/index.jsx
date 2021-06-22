@@ -26,7 +26,8 @@ const DataFileTable = (props) => {
            <div className="row border mt-4">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
              <p className="col-6 my-auto"><i className="fa fa-file"></i><strong> Filename:</strong></p>
-             <p className="col-4 my-auto"><i className="fa fa-download"></i><strong> Download:</strong></p>
+             <p className="col-2 my-auto"><i className="fa fa-download"></i><strong> Download JSON:</strong></p>
+             <p className="col-2 my-auto"><i className="fa fa-download"></i><strong> Download CSV:</strong></p>
            </div>
          )
          : null 
@@ -34,9 +35,16 @@ const DataFileTable = (props) => {
 
        <div className="row border" key={index}>
          <p className="col-2 mt-3">{ index + 1 }</p>
-         <p className="col-6 mt-3">{ file }</p>
-         <button className="btn btn-primary col-4 my-auto download-button mx-auto"
-            onClick={() => createFile(file)}>DOWNLOAD</button>
+         <p className="col-6 mt-3">{ file.split('.dat')[0] }</p>
+         <div className="col-2 my-auto mx-auto">
+           <button className="btn btn-primary"
+              onClick={() => createFile(file, true)}>JSON</button>
+         </div>
+
+         <div className="col-2 my-auto mx-auto">
+           <button className="btn btn-secondary"
+            onClick={() => createFile(file, false)}>CSV</button>
+         </div>
        </div>
 
        { index + 1 === files.length ?
@@ -45,7 +53,7 @@ const DataFileTable = (props) => {
              <p className="col-2 mt-3">{ index + 2}</p>
              <p className="col-6 my-auto"><strong>All Files</strong></p>
              <button className="btn btn-success col-4 my-auto download-button mx-auto"
-               onClick={() => createAllFiles()}>DOWNLOAD ALL</button>
+               onClick={() => createAllFiles()}>DOWNLOAD ALL (CSV)</button>
            </div>
          )
          : null 
@@ -53,23 +61,47 @@ const DataFileTable = (props) => {
      </div>
   });
 
-  const createFile = async (fileName) => {
+  const createFile = async (fileName, json = true) => {
     const resp = await downloadFile(fileName);
+    const { file } = resp?.data;
 
-    const downloadName = fileName.split('.')[0] + '.json';
+    const downloadName = fileName.split('.')[0] + (json ? '.json' : '.csv');
+    let fileToSave = null;
 
-    // Create a blob of the data
-    var fileToSave = new Blob([JSON.stringify(resp.data.file)], {
-        type: 'application/json',
-        name: downloadName
-    });
+    if (json) {
+
+      // Create a blob of the data
+      fileToSave = new Blob([JSON.stringify(file)], {
+          type: 'application/json',
+          name: downloadName
+      });
+      
+    } else {
+
+      // code taken from: https://stackoverflow.com/questions/8847766/how-to-convert-json-to-csv-format-and-store-in-a-variable
+      const json = file?.data;
+      const fields = Object.keys(json[0]);
+      const replacer = function(key, value) { return value === null ? '' : value } 
+      let csv = json.map(function(row) {
+        return fields.map(function(fieldName) {
+          return JSON.stringify(row[fieldName], replacer);
+        }).join(',')
+      })
+      csv.unshift(fields.join(',')); // add header column
+      csv = csv.join('\r\n');
+
+      fileToSave = new Blob([csv], {
+          type: 'text/csv',
+          name: downloadName
+      });
+    }
 
     // Save the file
     saveAs(fileToSave, downloadName);
   };
 
   const createAllFiles = () => {
-    files.forEach((file) => createFile(file));
+    files.forEach((file) => createFile(file, false));
   };
   
   return (
