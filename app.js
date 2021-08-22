@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fileUpload = require("express-fileupload");
+
 require('dotenv').config();
 
 // var indexRouter = require('./routes/index');
@@ -13,6 +15,9 @@ const app = express();
 
 const cors = require('cors'); // allow other domains to access this server
 app.use(cors());
+app.use(fileUpload({
+  createParentPath: true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

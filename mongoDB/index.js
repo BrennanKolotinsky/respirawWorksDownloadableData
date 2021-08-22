@@ -41,10 +41,23 @@ const getFile = async (filename) => {
   });
 }
 
+// untested!
+const uploadFile = async (file, filename) => {
+  return connection.then(async () => {
+    const dbo = client.db(databaseName);
+    return await dbo.collection(collectionName).insertOne({
+      filename,
+      data: file,
+      newerFormat: true,
+    });
+  }); 
+}
+
 module.exports = {
 	client,
 	connection,
 	testConnectToMongo,
 	grabAllFileNames,
   getFile,
+  uploadFile,
 };

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoConnection = require('../mongoDB/index.js');
+// let multer  = require('multer')
+// let upload = multer({ dest: 'uploads/' })
 
 // test-route/test-route
 router.get('/file-names', async (req, res) => {
@@ -13,7 +15,6 @@ router.get('/file-names', async (req, res) => {
 });
 
 router.get('/download-file', async (req, res) => {
-  
   const { fileName } = req.query;
   const file = await mongoConnection.getFile(fileName);
 
@@ -22,5 +23,26 @@ router.get('/download-file', async (req, res) => {
     file,
   });
 });
+
+router.post('/upload-file', async (req, res) => {
+  try {
+    if(!req.files){
+      res.send({
+        status: false,
+        message: "No files"
+      })
+    } else {
+      const { file } = req.files
+      file.mv("./images/" + file.name)
+
+      res.send({
+        status: true,
+        message: "File is uploaded"
+      });
+    }
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 
 module.exports = router;
