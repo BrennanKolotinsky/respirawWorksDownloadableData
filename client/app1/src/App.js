@@ -1,4 +1,5 @@
-import DataFileTable from './data-file-table/index.jsx'
+import DataFileTable from './data-file-table';
+import UploadFile from './upload-file';
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -10,7 +11,7 @@ export default function App() {
         <Switch>
           
           <Route path="/upload-file">
-            <h2>Select a File to Upload</h2>
+            <UploadFile />
           </Route>
 
           <Route path="/">

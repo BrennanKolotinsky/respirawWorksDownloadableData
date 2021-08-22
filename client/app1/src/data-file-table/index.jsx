@@ -109,9 +109,6 @@ const DataFileTable = (props) => {
         <h2 className="mt-4">Downloadable Test Data:</h2>
         {loadedFileNames ? filesTable : <center><i className="fa fa-spinner fa-spin fa-5x mt-5"></i></center>}
       </div>
-
-      
-      
     </div>
   );
 
