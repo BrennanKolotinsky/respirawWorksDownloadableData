@@ -41,14 +41,15 @@ const getFile = async (filename) => {
   });
 }
 
-// untested!
-const uploadFile = async (file, filename) => {
+const uploadFile = async (file) => {
+  console.log(file.filename);
   return connection.then(async () => {
     const dbo = client.db(databaseName);
+    console.log(typeof file);
     return await dbo.collection(collectionName).insertOne({
-      filename,
-      data: file,
+      ...file,
       newerFormat: true,
+      // filename, // -- may want to manually set this to prevent problems
     });
   }); 
 }

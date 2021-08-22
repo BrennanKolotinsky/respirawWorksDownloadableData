@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoConnection = require('../mongoDB/index.js');
 // let multer  = require('multer')
 // let upload = multer({ dest: 'uploads/' })
+const fs = require('fs');
+const path = require('path');
 
 // test-route/test-route
 router.get('/file-names', async (req, res) => {
@@ -32,13 +34,27 @@ router.post('/upload-file', async (req, res) => {
         message: "No files"
       })
     } else {
-      const { file } = req.files
-      file.mv("./images/" + file.name)
+      const { file } = req.files;
 
-      res.send({
-        status: true,
-        message: "File is uploaded"
-      });
+      if (file.name.split(".")[1] === "json") {
+
+        const stringOfData = file.data.toString('utf8'); // convert our buffer into a readable string
+        const jsonData = JSON.parse(stringOfData); // convert our string into JSON
+        const upload = await mongoConnection.uploadFile(jsonData);
+        console.log(upload);
+
+        res.send({
+          status: true,
+          message: "JSON is uploaded to the database"
+        });
+      } else {
+        file.mv("./images/" + file.name);
+
+        res.send({
+          status: true,
+          message: "Image is uploaded to server"
+        });
+      }
     }
   } catch (e) {
     res.status(500).send(e)
