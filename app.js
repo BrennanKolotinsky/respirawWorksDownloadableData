@@ -7,14 +7,6 @@ const fileUpload = require("express-fileupload");
 
 require('dotenv').config();
 
-// var buf = Buffer.from('abc');
-
-// console.log(buf.toString('utf8'));
-
-
-
-// console.log(buf.toJSON());
-
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 const mongoRouter = require('./routes/mongo-routes');

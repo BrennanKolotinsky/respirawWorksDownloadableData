@@ -16,13 +16,22 @@ router.get('/file-names', async (req, res) => {
   });
 });
 
-router.get('/get-file', async (req, res) => {
+router.get('/download-file', async (req, res) => {
   const { fileName } = req.query;
   const file = await mongoConnection.getFile(fileName);
 
   res.send({
     msg : "Worked!",
     file,
+  });
+});
+
+router.get('/get-file', async (req, res) => {
+  const { fileName } = req.query;
+  const file = await mongoConnection.getFile(fileName);
+
+  res.send({
+    ...file,
   });
 });
 

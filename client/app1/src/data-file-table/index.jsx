@@ -35,7 +35,7 @@ const DataFileTable = (props) => {
 
        <div className="row border" key={index}>
          <p className="col-2 mt-3">{ index + 1 }</p>
-         <p className="col-4 mt-3 text-break">{ file.split('.dat')[0] }</p>
+         <p className="col-4 mt-3 text-break">{ file }</p>
          <div className="col-2 my-auto mx-auto">
            <button className="btn btn-primary"
               onClick={() => createFile(file, true)}>JSON</button>

@@ -12,7 +12,7 @@ const getFileNames = async () => {
 }
 
 const downloadFile = async (fileName) => {
-    const route = `${url}/get-mongo-data/get-file?fileName=${fileName}`;
+    const route = `${url}/get-mongo-data/download-file?fileName=${fileName}`;
     return await axios({
         method: "GET", 
         url: route,

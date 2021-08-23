@@ -14,14 +14,6 @@ const ImportFile = (props) => {
 		const file = event.target.files[0];
 		setSelectedFilename(file.name);
 		setSelectedFile(file);
-
-		// convert to text -- implement on back-end
-	    // const reader = new FileReader();
-	    // reader.onload = (event) => {
-     	//   setSelectedFile(event.target.result);
-     	// };
-	    
-	    // reader.readAsText(file);
 	}
 
 	const onFileUpload = () => {
