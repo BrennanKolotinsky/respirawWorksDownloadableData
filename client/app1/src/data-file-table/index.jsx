@@ -46,7 +46,7 @@ const DataFileTable = (props) => {
             onClick={() => createFile(file, false)}>CSV</button>
          </div>
 
-          <p className="col-2 my-auto"><a href="http://ventmon.coslabs.com/breath_plot.html?o=0Logfile.0.0.0.0.respiraworks">Link</a></p>
+          <p className="col-2 my-auto"><a href={`http://ventmon.coslabs.com/breath_plot?raworks=http://ventmon.coslabs.com/data/${file}`}>Link</a></p>
        </div>
 
        { index + 1 === files.length ?

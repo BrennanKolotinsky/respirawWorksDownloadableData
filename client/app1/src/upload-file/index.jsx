@@ -31,7 +31,7 @@ const ImportFile = (props) => {
 			
 			<div>
 				{/* Change to application/json */}
-                <input type="file" onChange={onFileChange} accept="picture" />
+                <input type="file" onChange={onFileChange} accept="application/json" />
                 <button onClick={onFileUpload}>
                   Upload!
                 </button>
