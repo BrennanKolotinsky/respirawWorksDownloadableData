@@ -25,8 +25,9 @@ const DataFileTable = (props) => {
          (
            <div className="row border mt-4">
              <p className="col-2 mt-3"><strong>Index:</strong></p>
-             <p className="col-6 my-auto"><i className="fa fa-file"></i><strong> Filename:</strong></p>
+             <p className="col-4 my-auto"><i className="fa fa-file"></i><strong> Filename:</strong></p>
              <p className="col-4 my-auto"><i className="fa fa-download"></i><strong> Download:</strong></p>
+             <p className="col-2 my-auto"><i className="fa fa-external-link"></i><strong> URL:</strong></p>
            </div>
          )
          : null 
@@ -34,7 +35,7 @@ const DataFileTable = (props) => {
 
        <div className="row border" key={index}>
          <p className="col-2 mt-3">{ index + 1 }</p>
-         <p className="col-6 mt-3">{ file.split('.dat')[0] }</p>
+         <p className="col-4 mt-3 text-break">{ file.split('.dat')[0] }</p>
          <div className="col-2 my-auto mx-auto">
            <button className="btn btn-primary"
               onClick={() => createFile(file, true)}>JSON</button>
@@ -44,15 +45,19 @@ const DataFileTable = (props) => {
            <button className="btn btn-secondary"
             onClick={() => createFile(file, false)}>CSV</button>
          </div>
+
+          <p className="col-2 my-auto"><a href="http://ventmon.coslabs.com/breath_plot.html?o=0Logfile.0.0.0.0.respiraworks">Link</a></p>
        </div>
 
        { index + 1 === files.length ?
          (
            <div className="row border">
              <p className="col-2 mt-3">{ index + 2}</p>
-             <p className="col-6 my-auto"><strong>All Files</strong></p>
+             <p className="col-4 my-auto"><strong>All Files</strong></p>
              <button className="btn btn-success col-4 my-auto download-button mx-auto"
                onClick={() => createAllFiles()}>DOWNLOAD ALL (CSV)</button>
+
+             <p className="col-2"></p>
            </div>
          )
          : null 
