@@ -49,7 +49,7 @@ router.post('/upload-file', async (req, res) => {
 
         const stringOfData = file.data.toString('utf8'); // convert our buffer into a readable string
         const jsonData = JSON.parse(stringOfData); // convert our string into JSON
-        const upload = await mongoConnection.uploadFile(jsonData);
+        const upload = await mongoConnection.uploadFile(jsonData, file.name);
         console.log(upload);
 
         res.send({

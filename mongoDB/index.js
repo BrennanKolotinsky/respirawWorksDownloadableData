@@ -41,7 +41,7 @@ const getFile = async (filename) => {
   });
 }
 
-const uploadFile = async (file) => {
+const uploadFile = async (file, filename) => {
   console.log(file.filename);
   return connection.then(async () => {
     const dbo = client.db(databaseName);
@@ -49,7 +49,7 @@ const uploadFile = async (file) => {
     return await dbo.collection(collectionName).insertOne({
       ...file,
       newerFormat: true,
-      // filename, // -- may want to manually set this to prevent problems
+      filename: file.filename ?? filename, // if there is a filename set in the file use that as default to whatever the upload name was
     });
   }); 
 }
