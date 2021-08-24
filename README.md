@@ -10,7 +10,7 @@ To test locally:
 2. run ```npm i``` and ```npm update```
 3. run ```nodemon start``` in the root of the folder to run the server (will listen on 8080 by default)
 4. Open a separate window then run ```npm start``` in client/app1
-5. Look at  http://localhost:8081
+5. Look at  http://localhost:3000
 
 To test production:
 1. From the root of the folder run ```cd client/app1```
