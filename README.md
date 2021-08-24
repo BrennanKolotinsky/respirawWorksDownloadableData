@@ -16,3 +16,13 @@ To test production:
 1. From the root of the folder run ```cd client/app1```
 2. Run ```npm run build``` and push the changes
 3. See the product and changes on Heroku: https://respiraworks-download-data.herokuapp.com/
+
+Using Docker Remotely:
+1. install Docker
+2. ```docker pull brennank/dockerhub:respiraworks-public```
+3. look at IMAGE ID run ```docker run -p 8080:3001 ${image_id}```
+4. See at: http://localhost:8080/
+
+Using Docker Locally
+1. Run ```docker-compose up``` and view at http://localhost:8080/
+2. OR ```docker build -t brennank/testing:1.0 .``` --> find image id, then run ```Docker run```

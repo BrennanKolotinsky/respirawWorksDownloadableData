@@ -25,7 +25,7 @@ const grabAllFileNames = async () => {
   return connection.then(async () => {
     const dbo = client.db(databaseName);
     const fileNameArr = [];
-    await dbo.collection(collectionName).find().forEach(
+    await dbo.collection(collectionName).find({newerFormat: true}).forEach(
       (e) => {
       	fileNameArr.push(e.filename);
   	});
