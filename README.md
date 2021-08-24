@@ -8,9 +8,9 @@ Purpose
 To test locally:
 1. Clone the repo
 2. run ```npm i``` and ```npm update```
-3. run ```PORT=3001 nodemon start``` in the root of the folder to run the server
+3. run ```nodemon start``` in the root of the folder to run the server (will listen on 8080 by default)
 4. Open a separate window then run ```npm start``` in client/app1
-5. Look at  http://localhost:3000
+5. Look at  http://localhost:8081
 
 To test production:
 1. From the root of the folder run ```cd client/app1```
@@ -20,9 +20,9 @@ To test production:
 Using Docker Remotely:
 1. install Docker
 2. ```docker pull brennank/dockerhub:respiraworks-public```
-3. look at IMAGE ID run ```docker run -p 8080:3001 ${image_id}```
-4. See at: http://localhost:8080/
+3. look at IMAGE ID run ```docker run -p 5000:8080 ${image_id}```
+4. See at: http://localhost:5000/
 
 Using Docker Locally
-1. Run ```docker-compose up``` and view at http://localhost:8080/
+1. Run ```docker-compose up``` and view at http://localhost:5000/
 2. OR ```docker build -t brennank/testing:1.0 .``` --> find image id, then run ```Docker run```

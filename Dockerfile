@@ -16,7 +16,7 @@ COPY . .
 # set our envs
 ENV MONGODB_URL=mongodb+srv://respiraWorks:S5u7t5yOmomK0x9j@cluster0.7yqbv.mongodb.net/sampleData?retryWrites=true&w=majority
 
-EXPOSE 3001
+EXPOSE 8080
 
 # run our command to start
 CMD [ "npm", "start" ]

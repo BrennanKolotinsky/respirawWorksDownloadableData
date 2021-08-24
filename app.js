@@ -54,9 +54,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// This way you do not need to specify which port to run the command on PORT=3001 npm start can now be npm start (in case you want to start the backend and front-end separate)
-// Also makes our code work with Docker (could expose any port, but when you run docker run -p 5000:$port $dockerImage where $port is 3001)
-const port = process.env.PORT || 3001;
+// This way you do not need to specify which port to run the command on PORT=8080 npm start can now be npm start (in case you want to start the backend and front-end separate)
+// Also makes our code work with Docker (could expose any port, but when you run docker run -p 5000:$port $dockerImage where $port is 8080)
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => console.log(`app listening on http://localhost:${port}`));
 

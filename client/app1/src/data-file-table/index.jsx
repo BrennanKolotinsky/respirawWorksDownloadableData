@@ -46,7 +46,7 @@ const DataFileTable = (props) => {
             onClick={() => createFile(file, false)}>CSV</button>
          </div>
 
-          <p className="col-2 my-auto"><a href={`http://ventmon.coslabs.com/breath_plot?raworks=http://ventmon.coslabs.com/data/${file}`}>Link</a></p>
+          <p className="col-2 my-auto"><a href={`http://ventmon.coslabs.com/breath_plot?raworks=https://respiraworks-download-data.herokuapp.com/get-mongo-data/get-file?fileName=${file}`}>Link</a></p>
        </div>
 
        { index + 1 === files.length ?

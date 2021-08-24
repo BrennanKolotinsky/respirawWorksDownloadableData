@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = window.location.host === "localhost:3000" ? "http://localhost:3001" : "";
+const url = window.location.host === "localhost:3000" ? "http://localhost:8080" : "";
 
 const getFileNames = async () => {
 	const route = url + "/get-mongo-data/file-names";
