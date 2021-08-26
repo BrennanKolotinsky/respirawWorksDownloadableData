@@ -3,7 +3,6 @@ import UploadFile from './upload-file';
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-
 export default function App() {
   return (
     <div>

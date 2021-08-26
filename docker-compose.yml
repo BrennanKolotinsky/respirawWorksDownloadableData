@@ -1,6 +1,19 @@
 version: '1'
 services:
   web:
+    container_name: docker-node-mongo
     build: .
     ports:
       - "5000:8080"
+    links:
+      - mongo-db
+    environment:
+      - LOCAL_DB=false
+  # RUN DOCKER WITH MONGO IMAGE AND LOCAL DB
+  mongo-db:
+    container_name: mongo-db
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db/:/data/db
