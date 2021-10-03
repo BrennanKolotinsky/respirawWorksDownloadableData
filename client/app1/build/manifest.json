@@ -1,6 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Brennan Kolotinsky - RespiraWorks",
+  "name": "Brennan Kolotinsky - RespiraWorks",
+  "author": "Brennan Kolotinsky",
+  "omnibox": {
+    "keyword": "Brennan Kolotinsky"
+  },
   "icons": [
     {
       "src": "favicon.ico",
